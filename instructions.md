@@ -55,3 +55,21 @@ Consider organizing your code in `app/src/`:
 - Update `app/App.js` to start building your UI.
 - Explore the [Expo Documentation](https://docs.expo.dev/) for more advanced features like push notifications, camera, and maps.
 - If you need navigation, consider setting up [Expo Router](https://docs.expo.dev/router/introduction/).
+
+## Future Architectural & Performance Considerations
+
+To ensure Rta remains fast and responsive on mobile, keep these optimizations and strategies in mind:
+
+### 1. Performance Optimization
+- **New Architecture (Fabric):** Enable React Native's New Architecture to benefit from the synchronous UI thread and better performance for the code editor and AI streaming UI.
+- **FlashList:** Use `@shopify/flash-list` for the file explorer and Git logs to maintain 60 FPS scrolling even with large datasets.
+- **Lightweight State:** Prefer **Zustand** over Redux to keep the JS bundle small and state management simple.
+- **Styling:** Use **NativeWind** (Tailwind for React Native) or plain **StyleSheet** to minimize styling overhead.
+
+### 2. Git & Filesystem Integration
+- **Isomorphic-Git:** Explore using [isomorphic-git](https://isomorphic-git.org/) for a full Git client implementation in JavaScript.
+- **FS Layer:** Pair it with a compatible filesystem layer like `expo-file-system` (may require a shim) or `react-native-fs` to manage repository storage.
+
+### 3. Note on Alternative Frameworks (LynxJS/VanJS)
+- **Evaluation:** Evaluated LynxJS + VanJS for extreme startup speed (<200ms TTI) and multi-threaded UI benefits.
+- **Current Stance:** Sticking with React Native/Expo for the mature ecosystem (Editor components, Git/FS bridges) and stable development experience. Re-evaluate Lynx as its ecosystem matures, particularly for performance-critical "Core" components.
