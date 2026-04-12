@@ -89,3 +89,13 @@ Rta is an ongoing long-term project and is not expected to be fully completed be
 Rta is positioned between a code editor and an AI-powered development assistant. It is not intended to replace full desktop IDEs but to complement them by enabling lightweight, mobile-first development workflows.
 
 It focuses on practicality, speed, and accessibility, especially in situations where traditional development environments are unavailable or inconvenient.
+
+## Plan of building
+
+0. Backend - To make the api calls from the frontend we need a backend and a known structure we can build around. Backend is planned to only serve 3 purposes : Authentication , Data logging ( which will eventually be sent to supabase ) and Billing. All database will be at supabase , backend is just the middle layer. Will be built using FastAPI.
+ 
+1. CLI tool - Will provide an insight into how everything will work and will provide a learning base so that the app when built will be easy to work with and will be easy to understand. Will be built using python.
+
+2. Desktop App - After the CLI tool is built and all the learning has been gathered, the project will move onto the desktop app where the CLI tool will get an ui layer and many other features. Will be built upon tauri and preact.js
+
+3. Mobile App - After the desktop app is built and all the learning has been gathered, the project will move onto the mobile app where the desktop app will get an ui layer and many other features. Since all main things will be built before the mobile app, the porting will be rather easy and it will be built very fast. Will be built upon expo and react native.
