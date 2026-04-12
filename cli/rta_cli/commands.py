@@ -11,10 +11,19 @@ app = typer.Typer(
 console = Console()
 
 
-@app.callback()
-def callback():
+@app.command()
+def chat():
+    """Start the Rta chat interface"""
+    from rta_cli.chat import start_chat
+    start_chat()
+
+
+@app.callback(invoke_without_command=True)
+def callback(ctx: typer.Context):
     """Rta - AI-assisted code editor CLI"""
-    pass
+    if ctx.invoked_subcommand is None:
+        from rta_cli.chat import start_chat
+        start_chat()
 
 
 @app.command()
