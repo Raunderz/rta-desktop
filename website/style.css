@@ -45,13 +45,15 @@ body::-webkit-scrollbar-thumb {
 body::before {
     content: '';
     position: fixed;
-    inset: 0;
+    inset: -2%; /* Small overflow to prevent edges showing during parallax */
     z-index: -1;
     background-image:
         radial-gradient(ellipse at 50% 50%, rgba(4, 3, 0, 0.5) 0%, rgba(4, 3, 0, 0.85) 100%),
         url('/assets/background.png');
     background-size: cover;
     background-position: center;
+    transform: translate(calc(var(--mx, 0) * -1%), calc(var(--my, 0) * -1%));
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     will-change: transform;
 }
 

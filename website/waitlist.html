@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/assets/icon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Join Waitlist - Rta</title>
+    <link rel="stylesheet" href="/style.css" />
+    <style>
+        .waitlist-page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .back-link {
+            margin-bottom: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-style: italic;
+            letter-spacing: 0.1rem;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--accent);
+        }
+        .iframe-container {
+            width: 100%;
+            max-width: 640px;
+            height: 700px;
+            border: 1px solid var(--gold-dim);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+            overflow: hidden; /* Keep rounded corners but allow iframe to handle internal scroll if needed */
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: invert(0.92) hue-rotate(180deg) brightness(1.1) contrast(0.9);
+        }
+    </style>
+</head>
+<body>
+    <div class="waitlist-page">
+        <a href="/" class="back-link">← back to home</a>
+        <div class="iframe-container">
+            <iframe 
+                src="https://docs.google.com/forms/d/e/1FAIpQLSfnm1xCMBLUks3NIFWDfcyjvc6zIzC5gkQkevuXnTSGUnPQOQ/viewform?embedded=true" 
+                frameborder="0" 
+                marginheight="0" 
+                marginwidth="0">Loading…</iframe>
+        </div>
+        <p class="footer-line">Coming Soon — October 2026</p>
+    </div>
+    <script>
+        let ticking = false;
+        window.addEventListener('mousemove', (e) => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const x = (e.clientX / window.innerWidth - 0.5) * 2;
+                    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+                    document.body.style.setProperty('--mx', x.toFixed(2));
+                    document.body.style.setProperty('--my', y.toFixed(2));
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+    </script>
+</body>
+</html>
